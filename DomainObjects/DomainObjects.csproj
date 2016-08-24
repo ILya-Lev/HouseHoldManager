@@ -49,8 +49,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ElectricityConsumption.cs" />
-    <Compile Include="ElectricityTarif.cs" />
+    <Compile Include="Electricity\Consumption.cs" />
+    <Compile Include="Electricity\ConsumptionRange.cs" />
+    <Compile Include="Electricity\Tarif.cs" />
     <Compile Include="Month.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

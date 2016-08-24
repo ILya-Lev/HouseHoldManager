@@ -1,4 +1,5 @@
 ﻿using DomainObjects;
+using DomainObjects.Electricity;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -13,13 +14,13 @@ namespace DataAccess
 			_context = new Context();
 		}
 
-		public List<ElectricityConsumption> OrderedMeasurementsPerMonth (Month month)
+		public List<Consumption> OrderedMeasurementsPerMonth (Month month)
 			=> _context.ElectricityConsumptions
 				.Where(c => month.IsDayOfTheMonth(c.MeasurementTime))
 				.OrderBy(c => c.Id)
 				.ToList();
 
-		public void AddMeasurement (ElectricityConsumption measurement)
+		public void AddMeasurement (Consumption measurement)
 		{
 			_context.ElectricityConsumptions.Add(measurement);
 			_context.SaveChanges();

@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace DomainObjects
+namespace DomainObjects.Electricity
 {
-	public class ElectricityConsumption
+	public class Consumption
 	{
 		public int Id { get; set; }
 		public decimal MeterReadings { get; set; }
