@@ -1,6 +1,7 @@
 ﻿using DataAccess;
 using DomainObjects;
 using DomainObjects.Electricity;
+using MathNet.Numerics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,7 +46,16 @@ namespace BusinessLogic
 
 			return ExtrapolateForWholeMonth(month, consumption);
 		}
-
+		/// <summary>
+		/// performs linear extrapolation - tg(phi) = dy/dx => dy' = dx' * tg(phi)
+		/// where dx = last measurement date - first measurement date
+		/// dx' - last day of the month - first day of the month
+		/// dy - last measurement value - first measurement value
+		/// dy' - approximate difference between measurements in beginning and ending of the month
+		/// </summary>
+		/// <param name="month">the month calculations are performed for</param>
+		/// <param name="consumption">a list of measurements performed during the month</param>
+		/// <returns>amount of money should be paid for the month</returns>
 		private decimal ExtrapolateForWholeMonth (Month month, List<Consumption> consumption)
 		{
 			var startTarif = _tarifRepo.InForceAt(month.FirstDay);
@@ -73,14 +83,47 @@ namespace BusinessLogic
 				   endTarif.CalculatePrice(consumedBySecondTariff);
 		}
 
-		private decimal InterpolateViaRecordAndAmbientMonthes (Month month, Consumption theOnlyConsumption)
-		{
-			throw new NotImplementedException();
-		}
-
 		private decimal InterpolateViaAmbientMonthes (Month month)
 		{
-			throw new NotImplementedException();
+			var previousMeasurements = _consumptionRepo.OrderedMeasurementsPerMonth(month.Previous());
+			var nextMeasurements = _consumptionRepo.OrderedMeasurementsPerMonth(month.Next());
+
+			var overallMeasurements = previousMeasurements.Concat(nextMeasurements);
+
+			return PriceForMeasurementInterpolation(month, overallMeasurements);
+		}
+
+		private decimal InterpolateViaRecordAndAmbientMonthes (Month month, Consumption theOnlyConsumption)
+		{
+			var previousMeasurements = _consumptionRepo.OrderedMeasurementsPerMonth(month.Previous());
+			var nextMeasurements = _consumptionRepo.OrderedMeasurementsPerMonth(month.Next());
+
+			previousMeasurements.Add(theOnlyConsumption);
+
+			var overallMeasurements = previousMeasurements.Concat(nextMeasurements);
+
+			return PriceForMeasurementInterpolation(month, overallMeasurements);
+		}
+
+		private decimal PriceForMeasurementInterpolation (Month month, IEnumerable<Consumption> overallMeasurements)
+		{
+			var totalMeasurements = overallMeasurements
+				.Select(m => new
+				{
+					TimePoint = (m.MeasurementTime - DateTime.Today).TotalDays,
+					Value = (double) m.MeterReadings
+				}).ToList();
+
+			var coefficients = Fit.Line(totalMeasurements.Select(item => item.TimePoint).ToArray(),
+				totalMeasurements.Select(item => item.Value).ToArray());
+			//part 'coefficients.Item1 + ' is redundant, 'cause we need substitution only
+			var firstDayValue = coefficients.Item2 * (month.FirstDay - DateTime.Today).TotalDays;
+			var lastDayValue = coefficients.Item2 * (month.LastDay - DateTime.Today).TotalDays;
+
+			var consumedPerTheMonth = (decimal) (lastDayValue - firstDayValue);
+
+			return (_tarifRepo.InForceAt(month.FirstDay) ?? _tarifRepo.InForceAt(month.LastDay))
+				.CalculatePrice(consumedPerTheMonth);
 		}
 	}
 }

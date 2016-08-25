@@ -52,9 +52,9 @@
     <Compile Include="Context.cs" />
     <Compile Include="ElectricityConsumptionRepository.cs" />
     <Compile Include="ElectricityTarifsRepository.cs" />
-    <Compile Include="Migrations\201608241317497_EelctricityBaseClassesCreated.cs" />
-    <Compile Include="Migrations\201608241317497_EelctricityBaseClassesCreated.Designer.cs">
-      <DependentUpon>201608241317497_EelctricityBaseClassesCreated.cs</DependentUpon>
+    <Compile Include="Migrations\201608251325136_ElectricityClassesAdded.cs" />
+    <Compile Include="Migrations\201608251325136_ElectricityClassesAdded.Designer.cs">
+      <DependentUpon>201608251325136_ElectricityClassesAdded.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -70,8 +70,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201608241317497_EelctricityBaseClassesCreated.resx">
-      <DependentUpon>201608241317497_EelctricityBaseClassesCreated.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201608251325136_ElectricityClassesAdded.resx">
+      <DependentUpon>201608251325136_ElectricityClassesAdded.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

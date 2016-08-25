@@ -7,13 +7,13 @@ namespace DataAccess.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class EelctricityBaseClassesCreated : IMigrationMetadata
+    public sealed partial class ElectricityClassesAdded : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(EelctricityBaseClassesCreated));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(ElectricityClassesAdded));
         
         string IMigrationMetadata.Id
         {
-            get { return "201608241317497_EelctricityBaseClassesCreated"; }
+            get { return "201608251325136_ElectricityClassesAdded"; }
         }
         
         string IMigrationMetadata.Source
