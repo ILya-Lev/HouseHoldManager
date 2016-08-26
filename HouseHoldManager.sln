@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLogic", "BusinessLo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{BFFEB43D-FF2C-4781-BC91-23B9998AE983}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HouseHoldDeskClient", "HouseHoldDeskClient\HouseHoldDeskClient.csproj", "{A7DC612F-F045-44DE-8FAB-BB51689AA656}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{BFFEB43D-FF2C-4781-BC91-23B9998AE983}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BFFEB43D-FF2C-4781-BC91-23B9998AE983}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BFFEB43D-FF2C-4781-BC91-23B9998AE983}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7DC612F-F045-44DE-8FAB-BB51689AA656}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7DC612F-F045-44DE-8FAB-BB51689AA656}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7DC612F-F045-44DE-8FAB-BB51689AA656}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7DC612F-F045-44DE-8FAB-BB51689AA656}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
