@@ -1,8 +1,8 @@
-﻿using DomainObjects.Electricity;
-using System;
+﻿using System;
 using System.Linq;
+using DomainObjects.Electricity;
 
-namespace DataAccess
+namespace DataAccess.Repositories
 {
 	public class ElectricityTarifsRepository
 	{
@@ -16,8 +16,12 @@ namespace DataAccess
 		public Tarif CurrentlyInForce () => InForceAt(DateTime.Today);
 
 		public Tarif InForceAt (DateTime day)
-			=> _context.ElectricityTarifs.FirstOrDefault(
-				tarif => tarif.ApplicableSince < day && (tarif.ApplicableTill ?? day) >= day);
+		{
+			return _context.ElectricityTarifs
+				.Include(nameof(Tarif.ConsumptionRanges))
+				.FirstOrDefault(tarif => tarif.ApplicableSince < day
+									  && (tarif.ApplicableTill == null || tarif.ApplicableTill >= day));
+		}
 
 		public void AddTarif (Tarif tarif)
 		{

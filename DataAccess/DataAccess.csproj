@@ -50,14 +50,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context.cs" />
-    <Compile Include="ElectricityConsumptionRepository.cs" />
-    <Compile Include="ElectricityTarifsRepository.cs" />
     <Compile Include="Migrations\201608251325136_ElectricityClassesAdded.cs" />
     <Compile Include="Migrations\201608251325136_ElectricityClassesAdded.Designer.cs">
       <DependentUpon>201608251325136_ElectricityClassesAdded.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\ElectricityConsumptionRepository.cs" />
+    <Compile Include="Repositories\ElectricityTarifsRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DomainObjects\DomainObjects.csproj">
@@ -73,6 +73,9 @@
     <EmbeddedResource Include="Migrations\201608251325136_ElectricityClassesAdded.resx">
       <DependentUpon>201608251325136_ElectricityClassesAdded.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="SQL_scripts\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

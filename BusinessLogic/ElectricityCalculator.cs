@@ -5,6 +5,7 @@ using MathNet.Numerics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using DataAccess.Repositories;
 
 namespace BusinessLogic
 {
@@ -19,6 +20,7 @@ namespace BusinessLogic
 			_consumptionRepo = new ElectricityConsumptionRepository();
 		}
 
+		//for testing purposes
 		public ElectricityCalculator (ElectricityTarifsRepository tarifRepo, ElectricityConsumptionRepository consumptionRepo)
 		{
 			_tarifRepo = tarifRepo;
@@ -46,6 +48,7 @@ namespace BusinessLogic
 
 			return ExtrapolateForWholeMonth(month, consumption);
 		}
+
 		/// <summary>
 		/// performs linear extrapolation - tg(phi) = dy/dx => dy' = dx' * tg(phi)
 		/// where dx = last measurement date - first measurement date
@@ -122,8 +125,9 @@ namespace BusinessLogic
 
 			var consumedPerTheMonth = (decimal) (lastDayValue - firstDayValue);
 
-			return (_tarifRepo.InForceAt(month.FirstDay) ?? _tarifRepo.InForceAt(month.LastDay))
-				.CalculatePrice(consumedPerTheMonth);
+			var firstTarif = _tarifRepo.InForceAt(month.FirstDay);
+
+			return (firstTarif ?? _tarifRepo.InForceAt(month.LastDay)).CalculatePrice(consumedPerTheMonth);
 		}
 	}
 }
