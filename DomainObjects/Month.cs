@@ -21,5 +21,11 @@ namespace DomainObjects
 			FirstDay = FirstDay.AddMonths(1),
 			LastDay = FirstDay.AddMonths(2).AddDays(-1)
 		};
+
+		public static Month From (DateTime dt) => new Month
+		{
+			FirstDay = new DateTime(dt.Year, dt.Month, 1),
+			LastDay = new DateTime(dt.Year, dt.Month, 1).AddMonths(1).AddDays(-1)
+		};
 	}
 }

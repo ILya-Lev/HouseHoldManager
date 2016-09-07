@@ -50,8 +50,8 @@ namespace Tests
 			var calc = new ElectricityCalculator();
 			var month = new Month
 			{
-				FirstDay = new DateTime(2016, 07, 01),
-				LastDay = new DateTime(2016, 07, 31)
+				FirstDay = new DateTime(2016, 08, 01),
+				LastDay = new DateTime(2016, 08, 31)
 			};
 
 			var price = calc.PriceForMonth(month);
