@@ -1,6 +1,6 @@
-﻿using System;
+﻿using DomainObjects.Electricity;
+using System;
 using System.Linq;
-using DomainObjects.Electricity;
 
 namespace DataAccess.Repositories
 {
@@ -19,7 +19,7 @@ namespace DataAccess.Repositories
 		{
 			return _context.ElectricityTarifs
 				.Include(nameof(Tarif.ConsumptionRanges))
-				.FirstOrDefault(tarif => tarif.ApplicableSince < day
+				.FirstOrDefault(tarif => tarif.ApplicableSince <= day
 									  && (tarif.ApplicableTill == null || tarif.ApplicableTill >= day));
 		}
 

@@ -11,4 +11,7 @@ INSERT INTO [dbo].[ConsumptionRanges] ([Id], [Price], [AmountFrom], [AmountTo], 
 INSERT INTO [dbo].[ConsumptionRanges] ([Id], [Price], [AmountFrom], [AmountTo], [Tarif_Id]) VALUES (12, CAST(0.57 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(100.00 AS Decimal(18, 2)), 4)
 INSERT INTO [dbo].[ConsumptionRanges] ([Id], [Price], [AmountFrom], [AmountTo], [Tarif_Id]) VALUES (13, CAST(0.99 AS Decimal(18, 2)), CAST(100.00 AS Decimal(18, 2)), CAST(600.00 AS Decimal(18, 2)), 4)
 INSERT INTO [dbo].[ConsumptionRanges] ([Id], [Price], [AmountFrom], [AmountTo], [Tarif_Id]) VALUES (14, CAST(1.56 AS Decimal(18, 2)), CAST(600.00 AS Decimal(18, 2)), NULL, 4)
+INSERT INTO [dbo].[ConsumptionRanges] ([Id], [Price], [AmountFrom], [AmountTo], [Tarif_Id]) VALUES (15, CAST(0.74 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(100.00 AS Decimal(18, 2)), 5)
+INSERT INTO [dbo].[ConsumptionRanges] ([Id], [Price], [AmountFrom], [AmountTo], [Tarif_Id]) VALUES (16, CAST(1.29 AS Decimal(18, 2)), CAST(100.00 AS Decimal(18, 2)), CAST(600.00 AS Decimal(18, 2)), 5)
+INSERT INTO [dbo].[ConsumptionRanges] ([Id], [Price], [AmountFrom], [AmountTo], [Tarif_Id]) VALUES (17, CAST(1.64 AS Decimal(18, 2)), CAST(600.00 AS Decimal(18, 2)), NULL, 5)
 SET IDENTITY_INSERT [dbo].[ConsumptionRanges] OFF

@@ -3,7 +3,7 @@ namespace DataAccess.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class ElectricityClassesAdded : DbMigration
+    public partial class ElectricityModel : DbMigration
     {
         public override void Up()
         {

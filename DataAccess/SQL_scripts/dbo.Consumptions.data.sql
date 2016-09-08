@@ -29,5 +29,9 @@ INSERT INTO [dbo].[Consumptions] ([Id], [MeterReadings], [MeasurementTime]) VALU
 INSERT INTO [dbo].[Consumptions] ([Id], [MeterReadings], [MeasurementTime]) VALUES (28, CAST(4179.00 AS Decimal(18, 2)), N'2016-05-31 00:00:00')
 INSERT INTO [dbo].[Consumptions] ([Id], [MeterReadings], [MeasurementTime]) VALUES (29, CAST(4300.00 AS Decimal(18, 2)), N'2016-06-30 00:00:00')
 INSERT INTO [dbo].[Consumptions] ([Id], [MeterReadings], [MeasurementTime]) VALUES (30, CAST(4397.00 AS Decimal(18, 2)), N'2016-07-31 00:00:00')
-INSERT INTO [dbo].[Consumptions] ([Id], [MeterReadings], [MeasurementTime]) VALUES (31, CAST(4506.00 AS Decimal(18, 2)), N'2016-08-25 00:00:00')
+INSERT INTO [dbo].[Consumptions] ([Id], [MeterReadings], [MeasurementTime]) VALUES (31, CAST(4506.00 AS Decimal(18, 2)), N'2016-08-20 00:00:00')
+INSERT INTO [dbo].[Consumptions] ([Id], [MeterReadings], [MeasurementTime]) VALUES (32, CAST(4545.00 AS Decimal(18, 2)), N'2016-08-28 00:00:00')
+INSERT INTO [dbo].[Consumptions] ([Id], [MeterReadings], [MeasurementTime]) VALUES (33, CAST(4574.00 AS Decimal(18, 2)), N'2016-09-02 00:00:00')
+INSERT INTO [dbo].[Consumptions] ([Id], [MeterReadings], [MeasurementTime]) VALUES (34, CAST(4580.00 AS Decimal(18, 2)), N'2016-09-04 00:00:00')
+INSERT INTO [dbo].[Consumptions] ([Id], [MeterReadings], [MeasurementTime]) VALUES (35, CAST(4605.00 AS Decimal(18, 2)), N'2016-09-08 00:00:00')
 SET IDENTITY_INSERT [dbo].[Consumptions] OFF

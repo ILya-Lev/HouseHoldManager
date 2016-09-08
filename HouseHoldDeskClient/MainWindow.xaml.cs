@@ -55,7 +55,7 @@ namespace HouseHoldDeskClient
 
 		private void dtDate_CalendarClosed (object sender, RoutedEventArgs e)
 		{
-			btnCalculate.IsEnabled = dtDate.DisplayDate <= DateTime.Today;
+			btnCalculate.IsEnabled = dtDate.SelectedDate <= DateTime.Today;
 			if (!btnCalculate.IsEnabled)
 			{
 				MessageBox.Show("Please select past date!");

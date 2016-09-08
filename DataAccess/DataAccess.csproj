@@ -50,9 +50,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context.cs" />
-    <Compile Include="Migrations\201608251325136_ElectricityClassesAdded.cs" />
-    <Compile Include="Migrations\201608251325136_ElectricityClassesAdded.Designer.cs">
-      <DependentUpon>201608251325136_ElectricityClassesAdded.cs</DependentUpon>
+    <Compile Include="Migrations\201608272139443_ElectricityModel.cs" />
+    <Compile Include="Migrations\201608272139443_ElectricityModel.Designer.cs">
+      <DependentUpon>201608272139443_ElectricityModel.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -69,13 +69,16 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201608251325136_ElectricityClassesAdded.resx">
-      <DependentUpon>201608251325136_ElectricityClassesAdded.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201608272139443_ElectricityModel.resx">
+      <DependentUpon>201608272139443_ElectricityModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="SQL_scripts\" />
+    <Content Include="SQL_scripts\dbo.ConsumptionRanges.data.sql" />
+    <Content Include="SQL_scripts\dbo.Consumptions.data.sql" />
+    <Content Include="SQL_scripts\dbo.Tarifs.data.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

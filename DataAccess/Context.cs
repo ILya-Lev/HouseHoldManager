@@ -8,10 +8,10 @@ namespace DataAccess
 		public DbSet<Tarif> ElectricityTarifs { get; set; }
 		public DbSet<Consumption> ElectricityConsumptions { get; set; }
 
-		public Context (string nameOrConnectionString =
-			@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=DataAccess.Context;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False")
-			: base(nameOrConnectionString)
-		{
-		}
+		//public Context (string nameOrConnectionString =
+		//	@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=DataAccess.Context;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False")
+		//	: base(nameOrConnectionString)
+		//{
+		//}
 	}
 }
