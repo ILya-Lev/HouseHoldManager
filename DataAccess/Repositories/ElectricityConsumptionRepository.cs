@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using DomainObjects;
+﻿using DomainObjects;
 using DomainObjects.Electricity;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace DataAccess.Repositories
 {
@@ -9,20 +9,20 @@ namespace DataAccess.Repositories
 	{
 		private readonly Context _context;
 
-		public ElectricityConsumptionRepository ()
+		public ElectricityConsumptionRepository()
 		{
 			_context = new Context();
 		}
 
-		public List<Consumption> OrderedMeasurementsPerMonth (Month month)
+		public List<Consumption> OrderedMeasurementsPerMonth(Month month)
 		{
 			return _context.ElectricityConsumptions
 					.Where(c => c.MeasurementTime >= month.FirstDay && c.MeasurementTime <= month.LastDay)
-					.OrderBy(c => c.Id)
+					.OrderBy(c => c.MeasurementTime)
 					.ToList();
 		}
 
-		public void AddMeasurement (Consumption measurement)
+		public void AddMeasurement(Consumption measurement)
 		{
 			_context.ElectricityConsumptions.Add(measurement);
 			_context.SaveChanges();

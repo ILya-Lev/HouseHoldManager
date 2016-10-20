@@ -1,11 +1,10 @@
-﻿using DataAccess;
+﻿using DataAccess.Repositories;
 using DomainObjects;
 using DomainObjects.Electricity;
 using MathNet.Numerics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using DataAccess.Repositories;
 
 namespace BusinessLogic
 {
@@ -42,8 +41,8 @@ namespace BusinessLogic
 			if (consumption.Count == 1)
 			{
 				if (!month.IsFinished())
-					throw new ArgumentOutOfRangeException(nameof(month), "The month is not finished yet and there is only one record in the system. Please, go and take another one!");
-				return InterpolateViaRecordAndAmbientMonthes(month, consumption.First());
+					//throw new ArgumentOutOfRangeException(nameof(month), "The month is not finished yet and there is only one record in the system. Please, go and take another one!");
+					return InterpolateViaRecordAndAmbientMonthes(month, consumption.First());
 			}
 
 			return ExtrapolateForWholeMonth(month, consumption);
