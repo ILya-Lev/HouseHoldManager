@@ -13,20 +13,20 @@ namespace BusinessLogic
 		private readonly ElectricityTarifsRepository _tarifRepo;
 		private readonly ElectricityConsumptionRepository _consumptionRepo;
 
-		public ElectricityCalculator ()
+		public ElectricityCalculator()
 		{
 			_tarifRepo = new ElectricityTarifsRepository();
 			_consumptionRepo = new ElectricityConsumptionRepository();
 		}
 
 		//for testing purposes
-		public ElectricityCalculator (ElectricityTarifsRepository tarifRepo, ElectricityConsumptionRepository consumptionRepo)
+		public ElectricityCalculator(ElectricityTarifsRepository tarifRepo, ElectricityConsumptionRepository consumptionRepo)
 		{
 			_tarifRepo = tarifRepo;
 			_consumptionRepo = consumptionRepo;
 		}
 
-		public decimal PriceForMonth (Month month)
+		public decimal PriceForMonth(Month month)
 		{
 			var consumption = _consumptionRepo.OrderedMeasurementsPerMonth(month);
 			if (consumption.Count == 0)
@@ -40,9 +40,9 @@ namespace BusinessLogic
 
 			if (consumption.Count == 1)
 			{
-				if (!month.IsFinished())
-					//throw new ArgumentOutOfRangeException(nameof(month), "The month is not finished yet and there is only one record in the system. Please, go and take another one!");
-					return InterpolateViaRecordAndAmbientMonthes(month, consumption.First());
+				//if (!month.IsFinished())
+				//throw new ArgumentOutOfRangeException(nameof(month), "The month is not finished yet and there is only one record in the system. Please, go and take another one!");
+				return InterpolateViaRecordAndAmbientMonthes(month, consumption.First());
 			}
 
 			return ExtrapolateForWholeMonth(month, consumption);
@@ -58,7 +58,7 @@ namespace BusinessLogic
 		/// <param name="month">the month calculations are performed for</param>
 		/// <param name="consumption">a list of measurements performed during the month</param>
 		/// <returns>amount of money should be paid for the month</returns>
-		private decimal ExtrapolateForWholeMonth (Month month, List<Consumption> consumption)
+		private decimal ExtrapolateForWholeMonth(Month month, List<Consumption> consumption)
 		{
 			var startTarif = _tarifRepo.InForceAt(month.FirstDay);
 			var endTarif = _tarifRepo.InForceAt(month.LastDay);
@@ -85,7 +85,7 @@ namespace BusinessLogic
 				   endTarif.CalculatePrice(consumedBySecondTariff);
 		}
 
-		private decimal InterpolateViaAmbientMonthes (Month month)
+		private decimal InterpolateViaAmbientMonthes(Month month)
 		{
 			var previousMeasurements = _consumptionRepo.OrderedMeasurementsPerMonth(month.Previous());
 			var nextMeasurements = _consumptionRepo.OrderedMeasurementsPerMonth(month.Next());
@@ -95,7 +95,7 @@ namespace BusinessLogic
 			return PriceForMeasurementInterpolation(month, overallMeasurements);
 		}
 
-		private decimal InterpolateViaRecordAndAmbientMonthes (Month month, Consumption theOnlyConsumption)
+		private decimal InterpolateViaRecordAndAmbientMonthes(Month month, Consumption theOnlyConsumption)
 		{
 			var previousMeasurements = _consumptionRepo.OrderedMeasurementsPerMonth(month.Previous());
 			var nextMeasurements = _consumptionRepo.OrderedMeasurementsPerMonth(month.Next());
@@ -107,7 +107,7 @@ namespace BusinessLogic
 			return PriceForMeasurementInterpolation(month, overallMeasurements);
 		}
 
-		private decimal PriceForMeasurementInterpolation (Month month, IEnumerable<Consumption> overallMeasurements)
+		private decimal PriceForMeasurementInterpolation(Month month, IEnumerable<Consumption> overallMeasurements)
 		{
 			var totalMeasurements = overallMeasurements
 				.Select(m => new
