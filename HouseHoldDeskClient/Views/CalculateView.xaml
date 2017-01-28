@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="HouseHoldDeskClient.Views.CalculateView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HouseHoldDeskClient.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="12*"/>
+            <ColumnDefinition Width="13*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70*"/>
+            <RowDefinition Height="49*"/>
+            <RowDefinition Height="181*"/>
+        </Grid.RowDefinitions>
+        <Label x:Name="datePicker" Content="Pick a date" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <DatePicker Grid.Column="1" SelectedDate="{Binding Path=DateSet}"/>
+        <Button x:Name="button" Grid.ColumnSpan="2" Content="Button" Grid.Row="1"/>
+        <Label x:Name="bill" Content="Your bill: " Grid.Row="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <TextBlock x:Name="billValue" Grid.Column="1" Grid.Row="2" TextWrapping="Wrap" Text="{Binding Path=Bill}"/>
+    </Grid>
+</UserControl>

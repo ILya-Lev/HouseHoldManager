@@ -7,7 +7,7 @@ using System.Threading;
 using System.Windows;
 using System.Windows.Data;
 
-namespace HouseHoldDeskClient
+namespace HouseHoldDeskClient.Views
 {
 	/// <summary>
 	/// Interaction logic for MainWindow.xaml
@@ -18,7 +18,7 @@ namespace HouseHoldDeskClient
 		private readonly ElectricityConsumptionRepository _consumptionRepo;
 		private readonly ElectricityCalculator _calculator;
 
-		public MainWindow()
+		public MainWindow ()
 		{
 			InitializeComponent();
 			_tarifRepo = new ElectricityTarifsRepository();
@@ -27,42 +27,42 @@ namespace HouseHoldDeskClient
 
 			Thread.CurrentThread.CurrentCulture = new CultureInfo("en-UA");
 
-			btnCalculate.IsEnabled = false;
+			//btnCalculate.IsEnabled = false;
 		}
 
-		private void Window_Loaded(object sender, RoutedEventArgs e)
+		private void Window_Loaded (object sender, RoutedEventArgs e)
 		{
 			LoadActualViewSources();
 		}
 
-		private void LoadActualViewSources()
+		private void LoadActualViewSources ()
 		{
 			var tarifViewSource = (CollectionViewSource) this.FindResource("tarifViewSource");
 			// Load data by setting the CollectionViewSource.Source property:
-			tarifViewSource.Source = new[] { _tarifRepo.InForceAt(dtDate.DisplayDate) };
+			tarifViewSource.Source = new[] { _tarifRepo.InForceAt(DateTime.Now) };
 
 			var consumptionViewSource = (CollectionViewSource) this.FindResource("consumptionViewSource");
 			// Load data by setting the CollectionViewSource.Source property:
-			var month = Month.From(dtDate.DisplayDate);
+			var month = Month.From(DateTime.Now);
 			consumptionViewSource.Source = _consumptionRepo.OrderedMeasurementsPerMonth(month);
 		}
 
-		private void btnCalculate_Click(object sender, RoutedEventArgs e)
-		{
-			var month = Month.From(dtDate.DisplayDate);
-			priceBlock.Text = _calculator.PriceForMonth(month).ToString("C");
-		}
+		//private void btnCalculate_Click (object sender, RoutedEventArgs e)
+		//{
+		//	var month = Month.From(dtDate.DisplayDate);
+		//	priceBlock.Text = _calculator.PriceForMonth(month).ToString("C");
+		//}
 
-		private void dtDate_CalendarClosed(object sender, RoutedEventArgs e)
-		{
-			btnCalculate.IsEnabled = dtDate.SelectedDate <= DateTime.Today;
-			if (!btnCalculate.IsEnabled)
-			{
-				MessageBox.Show("Please select past date!");
-				return;
-			}
+		//private void dtDate_CalendarClosed (object sender, RoutedEventArgs e)
+		//{
+		//	btnCalculate.IsEnabled = dtDate.SelectedDate <= DateTime.Today;
+		//	if (!btnCalculate.IsEnabled)
+		//	{
+		//		MessageBox.Show("Please select past date!");
+		//		return;
+		//	}
 
-			LoadActualViewSources();
-		}
+		//	LoadActualViewSources();
+		//}
 	}
 }
