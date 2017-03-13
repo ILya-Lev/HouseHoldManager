@@ -8,7 +8,7 @@ namespace HouseHoldDeskClient.ViewModels
 	public class CalculateElectricityViewModel : INotifyPropertyChanged
 	{
 		private decimal _bill;
-		private DateTime _dateSet;
+		private DateTime _dateSet = DateTime.Today;
 
 		public ICommand Calculate { get; set; }
 
@@ -27,7 +27,7 @@ namespace HouseHoldDeskClient.ViewModels
 		#region INotifyPropertyChanged implementation
 		public event PropertyChangedEventHandler PropertyChanged;
 
-		protected virtual void OnPropertyChanged ([CallerMemberName] string propertyName = null)
+		protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
 		{
 			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 		}

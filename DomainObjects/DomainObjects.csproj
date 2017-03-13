@@ -41,6 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Car\Accidents.cs" />
+    <Compile Include="Car\Distance.cs" />
+    <Compile Include="Car\GasolinStation.cs" />
+    <Compile Include="Car\Location.cs" />
+    <Compile Include="Car\Petrol.cs" />
+    <Compile Include="Car\TechService.cs" />
     <Compile Include="Electricity\Consumption.cs" />
     <Compile Include="Electricity\ConsumptionRange.cs" />
     <Compile Include="Electricity\Tarif.cs" />
