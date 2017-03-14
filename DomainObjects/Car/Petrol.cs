@@ -4,6 +4,8 @@ namespace DomainObjects.Car
 {
 	public class Petrol
 	{
+		public int Id { get; set; }
+
 		public decimal Price { get; set; }
 		public double Amount { get; set; }
 		public DateTime Date { get; set; }

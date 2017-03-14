@@ -50,9 +50,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context.cs" />
-    <Compile Include="Migrations\201608272139443_ElectricityModel.cs" />
-    <Compile Include="Migrations\201608272139443_ElectricityModel.Designer.cs">
-      <DependentUpon>201608272139443_ElectricityModel.cs</DependentUpon>
+    <Compile Include="Migrations\201703141445251_Electricity_Car_Model.cs" />
+    <Compile Include="Migrations\201703141445251_Electricity_Car_Model.Designer.cs">
+      <DependentUpon>201703141445251_Electricity_Car_Model.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -69,10 +69,9 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201608272139443_ElectricityModel.resx">
-      <DependentUpon>201608272139443_ElectricityModel.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201703141445251_Electricity_Car_Model.resx">
+      <DependentUpon>201703141445251_Electricity_Car_Model.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
